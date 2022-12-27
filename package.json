@@ -1,0 +1,22 @@
+{
+  "name": "labri-bot",
+  "version": "1.0.0",
+  "description": "Labribob bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noitisoprepus/labri-bot.git"
+  },
+  "author": "noitisoprepus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/noitisoprepus/labri-bot/issues"
+  },
+  "homepage": "https://github.com/noitisoprepus/labri-bot#readme",
+  "devDependencies": {
+    "eslint": "^8.30.0"
+  }
+}
