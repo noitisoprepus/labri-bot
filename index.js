@@ -49,11 +49,27 @@ client.on(Events.InteractionCreate, async interaction => {
 	}
 });
 
-client.on(Events.MessageCreate, message => {
-	for (const word in bas2sWords) {
-		if (message.content.toLocaleLowerCase().includes(word)) {
-			message.reply(bas2sWords[word]);
+// Bas2s Police
+client.on(Events.MessageCreate, async message => {
+	// if (!message.member.moderatable) return;
+	try {
+		const kabas2san = [];
+
+		// index.js needs to be restarted for changes in bas2sWords to take place
+		for (const word in bas2sWords) {
+			if (message.content.toLowerCase().includes(word)) {
+				kabas2san.push(word);
+			}
 		}
+
+		// Unnecessary stuff, pangpaganda lang ng output
+		if (kabas2san.length == 0) return;
+		else if (kabas2san.length > 1) message.reply(bas2sWords['*bastos']);
+		else message.reply(bas2sWords[kabas2san[0]]);
+	}
+	catch (error) {
+		console.error(error);
+		await message.reply({ content: 'Nag-error ako, pero wag ka bastos!', ephemeral: true });
 	}
 });
 
