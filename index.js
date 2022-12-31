@@ -1,12 +1,14 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Events, GatewayIntentBits, Collection } = require('discord.js');
+const { Client, Events, GatewayIntentBits, Collection, GuildMember } = require('discord.js');
 const { token } = require('./config.json');
+const bas2sWords = require('./bas2s-words.json');
+
 const client = new Client({
 	intents: [
 		GatewayIntentBits.Guilds,
-		// GatewayIntentBits.GuildMessages,
-		// GatewayIntentBits.MessageContent,
+		GatewayIntentBits.GuildMessages,
+		GatewayIntentBits.MessageContent,
 	],
 });
 
@@ -44,6 +46,14 @@ client.on(Events.InteractionCreate, async interaction => {
 	catch (error) {
 		console.error(error);
 		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+	}
+});
+
+client.on(Events.MessageCreate, message => {
+	for (const word in bas2sWords) {
+		if (message.content.toLocaleLowerCase().includes(word)) {
+			message.reply(bas2sWords[word]);
+		}
 	}
 });
 
