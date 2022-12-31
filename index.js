@@ -2,6 +2,8 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Events, GatewayIntentBits, Collection, GuildMember } = require('discord.js');
 const { token } = require('./config.json');
+
+// Specific to our own discord server
 const bas2sWords = require('./bas2s-words.json');
 
 const client = new Client({

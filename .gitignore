@@ -103,6 +103,7 @@ dist
 # TernJS port file
 .tern-port
 
-# Discord.js
+# Labri bot
 config.json
 *.env
+bas2s-words.json
